@@ -27,8 +27,6 @@ public class AuthorService {
     }
 
     public AuthorResponse create(AuthorRequest request) {
-        // Name , birthDate ve country bizim için unique sayılıyor bu yüzden bu özelliklere sahip author var mı diye
-        // DB den bakıyoruz yoksa create isteği atabiliriz.
         Optional<Author> isAuthorExist = authorRepository.findByNameAndBirthDateAndCountry(request.getName(), request.getBirthDate(), request.getCountry());
 
         if (isAuthorExist.isEmpty()) {
